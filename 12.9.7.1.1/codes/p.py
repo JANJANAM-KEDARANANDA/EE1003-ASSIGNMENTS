@@ -35,7 +35,7 @@ for i in range(n):
     coords.append(np.array([pt[0], pt[1]]))
 
 coords_plot = np.array(coords)
-plt.scatter(coords_plot[:, 0], coords_plot[:, 1], marker=".", label="Simulated Points", color="royalblue")
+plt.scatter(coords_plot[:, 0], coords_plot[:, 1], marker=".", label="Sim", color="royalblue")
 
 # freeing the memory of the array 'pts'
 dll.freeMultiMem(pts, n)
