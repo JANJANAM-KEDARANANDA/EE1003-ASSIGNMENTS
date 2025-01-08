@@ -1,11 +1,15 @@
 \frametitle{Python-Code}
 \begin{lstlisting}
-# Set the limits for y-axis to ensure complete visibility of the ellipse
-plt.ylim(k - b - 1, k + b + 1)  # Slightly adjust as needed for aesthetics
+ax.spines['right'].set_color('none')
+ax.spines['bottom'].set_position('zero')
 
-# Set equal aspect ratio to avoid distortion
-plt.gca().set_aspect('equal', adjustable='box')
+plt.legend(loc='best')
+plt.grid()
+plt.axis('equal')
 
-# Show the plot
+plt.xlabel('x')
+plt.ylabel('y')
+
+# Display the plot
 plt.show()
 \end{lstlisting}
