@@ -1,0 +1,15 @@
+\frametitle{Python-Code}
+\begin{lstlisting}
+ax.spines['right'].set_color('none')
+ax.spines['bottom'].set_position('zero')
+
+plt.legend(loc='best')
+plt.grid()
+plt.axis('equal')
+
+plt.xlabel('x')
+plt.ylabel('y')
+
+# Display the plot
+plt.show()
+\end{lstlisting}
