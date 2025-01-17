@@ -26,49 +26,56 @@ void LUdec(double A[N][N], double L[N][N], double U[N][N]) {
     }
 }
 
-void systemsolver(double L[N][N], double U[N][N], double b[N], double x[N]) {
-    double y[N] = {0};
-    // Front substitution
+void printMat(double matrix[N][N]) {
     for (int i = 0; i < N; i++) {
-        y[i] = b[i];
-        for (int j = 0; j < i; j++) {
-            y[i] -= L[i][j] * y[j];
+        for (int j = 0; j < N; j++) {
+            printf("%.4lf ", matrix[i][j]);
         }
-        y[i] /= L[i][i];
-    }
-    // Back substitution to find x
-    for (int i = N - 1; i >= 0; i--) {
-        x[i] = y[i];
-        for (int j = i + 1; j < N; j++) {
-            x[i] -= U[i][j] * x[j];
-        }
-        x[i] /= U[i][i];
+        printf("\n");
     }
 }
 
-// Function to be called from Python
-void solve_system(double result[N]) {
+void systemsolver(double L[N][N],double U[N][N], double b[N], double x[N]){
+    double y[N] = {0};
+    // Front - substituition
+    for(int i=0;i<N;i++){
+      y[i] = b[i];
+      for(int j=0;j<i;j++){
+        y[i] -= L[i][j]*y[j];
+      }
+      y[i] /= L[i][i];
+    }
+    // Back Substituition to find x;
+    for(int i=N-1;i>-1;i--){
+      x[i] = y[i];
+      for(int j=i+1;j<N;j++){
+        x[i] -= U[i][j]*x[j];
+      }
+      x[i] /= U[i][i];
+    }
+    printf("Solution to the given equation is \n");
+    for(int i=0;i<N;i++){printf("%.4lf ", x[i]);} printf("\n");
+}
+
+
+int main() {
     double A[N][N] = {
         {3, 2},
         {2, -3}
     };
-    double b[N] = {5, 7};
-    double x[N] = {0};
+    double b[N] = {5,7}, x[N] = {0};
     double L[N][N] = {0};
     double U[N][N] = {0};
 
     LUdec(A, L, U);
-    systemsolver(L, U, b, x);
+    systemsolver(L,U,b,b);
+    printf("A:\n");
+    printMat(A);
 
-    result[0] = x[0];
-    result[1] = x[1];
-}
+    printf("\nL:\n");
+    printMat(L);
 
-int main() {
-    // Optional: For testing purposes
-    double result[N] = {0};
-    solve_system(result);
-    printf("Solution: x = %.4lf, y = %.4lf\n", result[0], result[1]);
+    printf("\nU:\n");
+    printMat(U);
     return 0;
 }
-

@@ -116,27 +116,44 @@
 		\mathbf{x} &= \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}, \\
 		\mathbf{b} &= \begin{bmatrix} 5 \\ 7 \end{bmatrix}.
 	\end{align}
+	\subsection*{Step 2: LU factorization using update equaitons}
+	Given a matrix $ \mathbf{A} $ of size $ n \times n $, LU decomposition is performed row by row and column by column. The update equations are as follows:\\
+	\textbf{Step-by-Step Procedure:}\\
+	1. Initialization: 
+	- Start by initializing $ \mathbf{L} $ as the identity matrix $ \mathbf{L} = \mathbf{I} $ and $ \mathbf{U} $ as a copy of $ \mathbf{A} $.
 	
+	2. Iterative Update:
+	- For each pivot $ k = 1, 2, \ldots, n $:
+	- Compute the entries of $ U $ using the first update equation.
+	- Compute the entries of $ L $ using the second update equation.
+	
+	3. Result:
+	- After completing the iterations, the matrix $ \mathbf{A} $ is decomposed into $ \mathbf{L} \cdot \mathbf{U} $, where $ \mathbf{L} $ is a lower triangular matrix with ones on the diagonal, and $ \mathbf{U} $ is an upper triangular matrix.
+	
+	
+	
+	\subsection*{1. Update for $ U_{k,j} $ (Entries of $ U $)}
+	
+	For each column $ j \geq k $, the entries of $ U $ in the $ k $-th row are updated as:
+	\[
+	U_{k,j} = A_{k,j} - \sum_{m=1}^{k-1} L_{k,m} \cdot U_{m,j}, \quad \text{for } j \geq k.
+	\]
+	This equation computes the elements of the upper triangular matrix $ \mathbf{U} $ by eliminating the lower triangular portion of the matrix.
+	
+	\subsection*{2. Update for $ L_{i,k} $ (Entries of $ L $)}
+	
+	For each row $ i > k $, the entries of $ L $ in the $ k $-th column are updated as:
+	\[
+	L_{i,k} = \frac{1}{U_{k,k}} \left( A_{i,k} - \sum_{m=1}^{k-1} L_{i,m} \cdot U_{m,k} \right), \quad \text{for } i > k.
+	\]
+	This equation computes the elements of the lower triangular matrix $ \mathbf{L} $, where each entry in the column is determined by the values in the rows above it.\\
 	\subsection*{Step 2: LU Factorization of Matrix A}
 	We decompose $A$ as:
 	\begin{align}
 		A &= LU,
 	\end{align}
-	where $L$ is a lower triangular matrix and $U$ is an upper triangular matrix. Let:
-	\begin{align}
-		L &= \begin{bmatrix} 1 & 0 \\ \ell_{21} & 1 \end{bmatrix}, \\
-		U &= \begin{bmatrix} u_{11} & u_{12} \\ 0 & u_{22} \end{bmatrix}.
-	\end{align}
-	
-	First, we compute $U$:
-	\begin{align}
-		u_{11} &= 3, \\
-		u_{12} &= 2, \\
-		\ell_{21} &= \frac{2}{3}, \\
-		u_{22} &= -3 - \left(\frac{2}{3} \cdot 2\right) = -\frac{13}{3}.
-	\end{align}
-	
-	Thus, the LU decomposition is:
+	where $L$ is a lower triangular matrix and $U$ is an upper triangular matrix.
+	by running the iteration code we get the L and U matrices :
 	\begin{align}
 		L &= \begin{bmatrix} 1 & 0 \\ \frac{2}{3} & 1 \end{bmatrix}, \\
 		U &= \begin{bmatrix} 3 & 2 \\ 0 & -\frac{13}{3} \end{bmatrix}.
@@ -189,8 +206,9 @@
 		y &= -\frac{11}{13}.
 	\end{align}
 	As we can clearly see that there is solution for the given lines these are consistent 
-	\begin{figure}[h!]
+	\begin{figure}[!ht]
 		\centering
 		\includegraphics[width=\columnwidth]{figs/Fig.png}
+		\caption{}
 	\end{figure}
 \end{document}
