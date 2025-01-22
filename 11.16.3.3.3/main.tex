@@ -1,4 +1,4 @@
-  \let\negmedspace\undefined
+\let\negmedspace\undefined
 \let\negthickspace\undefined
 \documentclass[journal]{IEEEtran}
 \usepackage[a5paper, margin=10mm, onecolumn]{geometry}
@@ -42,7 +42,7 @@
 	\vspace{3cm}
 	
 	\title{11.16.3.3.3}
-	\author{EE24BTECH11030 - KEDARANANDA}
+	\author{EE24BTECH11030 - KEDARANANDA }
 	% \maketitle
 	% \newpage
 	% \bigskip
@@ -59,72 +59,127 @@
 	
 	
 	\textbf{Question}:\\
-	A die is rolled, Find the probability that a number greater than or equal to one  will appear \\
+	A die is rolled. Find the probability that a number greater than or equal to one will appear.\\
 	\textbf{Solution: }\\
-	\textbf{Textual solution: }\\
-	The probability of a given event 'A' (A: Outcome is greater than or equal to 1) can be calculated as follows: 
-	\begin{align}
-		\text{P(A)} = \frac{\text{Number of favorable outcomes}}{\text{Total possible outcomes}}
-	\end{align}
-	Since all outcomes on a standard die (\(1, 2, 3, 4, 5, 6\)) are greater than or equal to 1, all outcomes are favorable.
+	\textbf{Theoretical solution: }\\
+	To calculate the probability of rolling a number greater than or equal to one:
 	
-	\begin{align}
-		\text{P(A)} = \frac{6}{6} = 1
-	\end{align}
+	\begin{itemize}
+		\item A standard die has six faces numbered from 1 to 6.
+		\item The total number of possible outcomes is:
+		\[
+		\text{Total outcomes} = 6.
+		\]
+		\item The number of outcomes where the number is greater than or equal to one is:
+		\[
+		\text{Favorable outcomes} = 6.
+		\]
+		\item The probability is given by:
+		\[
+		P(\text{Number} \geq 1) = \frac{\text{Favorable outcomes}}{\text{Total outcomes}} = \frac{6}{6} = 1.
+		\]
+	\end{itemize}
+	
+	Thus, the probability that a number greater than or equal to one will appear is:
+	\[
+	\boxed{1}
+	\]
 	
 	\textbf{Computational solution: }\\
-	\section*{Introduction}
-	This document describes a computational experiment where a six-sided die is rolled 10,000 times. The outcomes are stored in a shared file, and Python is used to analyze these outcomes. The analysis calculates the probabilities of specific results (\( \geq 1, =1, =2, =3, =4, =5, =6 \)) and visualizes the probabilities using a stem plot.
+	\section*{Z-Transform Computational Method for Die Roll PMF}
+	\subsection*{PMF for a Single Die Roll}
+	For a single die roll, the probability mass function (PMF) is:
+	\[
+	P_X(k) =
+	\begin{cases}
+		\frac{1}{6}, & \text{if } x = 1, 2, 3, 4, 5, 6 \\
+		0, & \text{if } x \notin \{1, 2, 3, 4, 5, 6\}
+	\end{cases}
+	\]
 	
-	The workflow consists of two main parts:
+	\subsection*{Conditions for PMF}
+	A valid PMF must satisfy the following conditions:
+	\begin{enumerate}
+		\item Non-negativity: \(\forall k, P_X(k) \geq 0\).
+		\item Normalization: \(\sum_{k} P_X(k) = 1\).
+	\end{enumerate}
+	For a single die roll:
+	\begin{align}
+		P_X(1) + P_X(2) + P_X(3) + P_X(4) + P_X(5) + P_X(6) = 1.
+	\end{align}
+	Substituting \(P_X(k) = \frac{1}{6}\) for all valid outcomes:
+	\begin{align}
+		6 \times \frac{1}{6} = 1.
+	\end{align}
+	
+	\subsection*{Z-Transform Expansion}
+	The Z-transform for the number rolled is given by:
+	\begin{align}
+		T(z) = \left( \frac{1}{6}z^1 + \frac{1}{6}z^2 + \frac{1}{6}z^3 + \frac{1}{6}z^4 + \frac{1}{6}z^5 + \frac{1}{6}z^6 \right)
+	\end{align}
+	where:
 	\begin{itemize}
-		\item Generating random die rolls using a C program and storing the results in a file.
-		\item Analyzing and plotting the probabilities using Python.
+		\item Each term represents the probability of a specific outcome multiplied by its corresponding power of \(z\).
 	\end{itemize}
 	
-	\section*{C Code Description}
-	The C program is responsible for simulating 10,000 rolls of a six-sided die. It utilizes the \texttt{rand()} function to generate random numbers between 1 and 6. These outcomes are then written to a file named \texttt{outcomes.so}.
+	\subsection*{Expansion of \(T(z)\)}
+	Simplify the expression:
+	\begin{align}
+		T(z) = \frac{1}{6}(z^1 + z^2 + z^3 + z^4 + z^5 + z^6).
+	\end{align}
+	The coefficient of \(z^k\) in \(T(z)\) gives the probability \(P_X(k)\), where \(X\) is the outcome of the die roll.
 	
-	Key features of the C program:
-	\begin{itemize}
-		\item The random number generator is seeded using the current time to ensure variability in results.
-		\item A loop runs 10,000 iterations to generate the required number of outcomes.
-		\item Each generated outcome is written line by line to the output file.
-	\end{itemize}
+	\subsection*{Probability Mass Function (PMF)}
+	The PMF is computed as:
+	\begin{align}
+		P_X(k) = \frac{1}{6}, \quad k \in \{1, 2, 3, 4, 5, 6\}.
+	\end{align}
 	
-	The file \texttt{outcomes.so} serves as a bridge between the C and Python programs, enabling the latter to perform statistical analysis on the data.
+	\subsection*{Computational Steps}
+	For each \(k \in \{1, 2, \dots, 6\}\):
+	\begin{enumerate}
+		\item Compute the binomial coefficient (trivial for single outcomes).
+		\item Multiply by \(\frac{1}{6}\) to compute \(P_X(k)\).
+	\end{enumerate}
 	
-	\section*{Python Code Description}
-	The Python program reads the outcomes stored in \texttt{outcomes.so}, calculates probabilities for specific outcomes, and visualizes the results using a stem plot.
+	\subsection*{Result for Single Roll}
+	The PMF values are:
+	\begin{align}
+		P_X(1) = \frac{1}{6}, \quad P_X(2) = \frac{1}{6}, \quad \dots, \quad P_X(6) = \frac{1}{6}.
+	\end{align}
 	
-	Key steps in the Python program:
-	\begin{itemize}
-		\item Read the data from \texttt{outcomes.so} and store it in a list.
-		\item Calculate the probability of each outcome (\( \geq 1, =1, =2, =3, =4, =5, =6 \)) by counting occurrences and dividing by the total number of outcomes.
-		\item Use the Matplotlib library to create a stem plot where:
-		\begin{itemize}
-			\item The x-axis represents the outcome categories (\( \geq 1, =1, =2, =3, =4, =5, =6 \)).
-			\item The y-axis represents the probabilities, ranging from 0 to 1.
-		\end{itemize}
-	\end{itemize}
+	\subsection*{Conclusion}
+	The probability of rolling a number greater than or equal to one is the sum of all PMF values:
+	\begin{align}
+		P(X \geq 1) = \sum_{k=1}^{6} P_X(k) = \frac{6}{6} = 1.
+	\end{align}
+	\subsection*{Cumulative Distribution Function (CDF)}
 	
-	The stem plot provides a clear visualization of the distribution of outcomes, making it easy to interpret the results.
+	The cumulative distribution function (CDF) \(F(x)\) of a discrete random variable \(X\), representing the outcome of a die roll, is defined as:
 	
-	\section*{Graphical Output}
-	The graphical output consists of a stem plot that shows the probability distribution of the die roll outcomes. The probabilities are calculated based on the 10,000 simulated rolls.
+	\[
+	F(x) = P(X \leq x)
+	\]
 	
-	Key observations from the plot:
-	\begin{itemize}
-		\item The probability of \( \geq 1 \) is always 1, as all outcomes are between 1 and 6.
-		\item The probabilities for \( =1, =2, =3, =4, =5, =6 \) are approximately equal, reflecting the fairness of the die.
-	\end{itemize}
+	For a die roll with outcomes \(1, 2, 3, 4, 5, 6\), the CDF is:
 	
-	The stem plot serves as a visual summary of the experiment, highlighting the uniform probability distribution of a fair six-sided die.
+	\[
+	F(x) =
+	\begin{cases}
+		0, & \text{if } x < 1 \\
+		\frac{1}{6}, & \text{if } 1 \leq x < 2 \\
+		\frac{2}{6}, & \text{if } 2 \leq x < 3 \\
+		\frac{3}{6}, & \text{if } 3 \leq x < 4 \\
+		\frac{4}{6}, & \text{if } 4 \leq x < 5 \\
+		\frac{5}{6}, & \text{if } 5 \leq x < 6 \\
+		1, & \text{if } x \geq 6
+	\end{cases}
+	\]
+	
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=\columnwidth]{figs/Fig.png}
-		\caption{Solution of the system of linear equations}
 		\label{stemplot}
 	\end{figure}
 	
-\end{document}  
+\end{document}

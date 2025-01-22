@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2025.1.10)  21 JAN 2025 02:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2025.1.10)  23 JAN 2025 00:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1902,63 +1902,55 @@ Package hyperref Info: Link coloring OFF on input line 39.
 \openout5 = `main.out'.
 
 \c@lstlisting=\count397
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 66
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 68
 .
  (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Trying to load font information for U+txmia on input line 6
-6.
+8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 66.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 68.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 68.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+txsyc on input line 6
-6.
+8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Trying to load font information for TS1+txr on input line 6
-6.
+8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ts1txr.fd
 File: ts1txr.fd 2000/12/15 v3.1
 )
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
  []
 
-LaTeX Font Info:    Trying to load font information for OT1+txtt on input line 
-86.
-(/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txtt.fd
-File: ot1txtt.fd 2000/12/15 v3.1
-) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texm
-f-dist/fonts/enc/dvips/base/8r.enc}
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/base/8r.enc}
 
-]
-<figs/Fig.png, id=47, 578.16pt x 361.35pt>
+] [2]
+<figs/Fig.png, id=69, 462.528pt x 346.896pt>
 File: figs/Fig.png Graphic file (type png)
 <use figs/Fig.png>
-Package pdftex.def Info: figs/Fig.png  used on input line 125.
-(pdftex.def)             Requested size: 364.1953pt x 227.61862pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[2] [3 <./figs/Fig.png>] (./main.aux)
+Package pdftex.def Info: figs/Fig.png  used on input line 181.
+(pdftex.def)             Requested size: 364.1953pt x 273.16086pt.
+ [3 <./figs/Fig.png>] (./main.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
@@ -1966,23 +1958,25 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 52665 strings out of 476034
- 1245671 string characters out of 5792864
- 1863388 words of memory out of 6000000
- 72282 multiletter control sequences out of 15000+600000
- 577455 words of font info for 166 fonts, out of 8000000 for 9000
+ 52646 strings out of 476034
+ 1245315 string characters out of 5792864
+ 1864388 words of memory out of 6000000
+ 72249 multiletter control sequences out of 15000+600000
+ 578793 words of font info for 168 fonts, out of 8000000 for 9000
  1140 hyphenation exceptions out of 8191
- 109i,11n,107p,1194b,884s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 109i,9n,107p,1194b,897s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/public/txfonts/rtxsc.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/txfonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/txfonts/txtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utm
-b8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on main.pdf (3 pages, 59569 bytes).
+onts/type1/public/txfonts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/txfonts/txsy.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfont
+s/txsyc.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (3 pages, 73095 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 58 compressed objects within 1 object stream
- 11 named destinations out of 1000 (max. 500000)
+ 124 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
+ 26 named destinations out of 1000 (max. 500000)
  114 words of extra memory for PDF output out of 10000 (max. 10000000)
 
