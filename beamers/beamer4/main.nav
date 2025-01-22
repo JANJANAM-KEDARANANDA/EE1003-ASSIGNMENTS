@@ -1,0 +1,35 @@
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\slideentry {0}{0}{3}{3/3}{}{0}}
+\headcommand {\beamer@framepages {3}{3}}
+\headcommand {\slideentry {0}{0}{4}{4/4}{}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\slideentry {0}{0}{5}{5/5}{}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\slideentry {0}{0}{6}{6/6}{}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\beamer@subsectionpages {1}{6}}
+\headcommand {\beamer@subsectionentry {0}{0}{1}{7}{Step 2: LU Factorization of Matrix $A$}}
+\headcommand {\beamer@subsectionpages {7}{6}}
+\headcommand {\beamer@subsectionentry {0}{0}{2}{7}{Step 3: Solve $L\mathbf {y} = \mathbf {b}$ (Forward Substitution)}}
+\headcommand {\slideentry {0}{2}{0}{7/7}{}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\beamer@subsectionpages {1}{7}}
+\headcommand {\beamer@subsectionentry {0}{0}{3}{8}{Step 3: Solve $L\mathbf {y} = \mathbf {b}$ (Forward Substitution) - Continued}}
+\headcommand {\beamer@subsectionpages {8}{7}}
+\headcommand {\beamer@subsectionentry {0}{0}{4}{8}{Step 4: Solve $U\mathbf {x} = \mathbf {y}$ (Backward Substitution)}}
+\headcommand {\slideentry {0}{4}{0}{8/8}{}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\beamer@subsectionpages {1}{8}}
+\headcommand {\beamer@subsectionentry {0}{0}{5}{9}{Final Solution}}
+\headcommand {\slideentry {0}{5}{0}{9/9}{}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\slideentry {0}{5}{1}{10/10}{}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\beamer@partpages {1}{10}}
+\headcommand {\beamer@subsectionpages {1}{10}}
+\headcommand {\beamer@sectionpages {1}{10}}
+\headcommand {\beamer@documentpages {10}}
+\headcommand {\gdef \inserttotalframenumber {10}}

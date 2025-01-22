@@ -1,0 +1,202 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{gensymb}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{tikz}
+\lstset{
+	language=Python,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue},
+	stringstyle=\color{orange},
+	numbers=left,
+	numberstyle=\tiny\color{gray},
+	breaklines=true,
+	showstringspaces=false
+}
+\usetikzlibrary{decorations.pathmorphing}
+
+\title{Question-10.3.2.3.1}
+\author{EE24BTECH11030 - J.KEDARANANDA}
+\date{}
+\begin{document}
+	
+	\frame{\titlepage}
+	
+	\begin{frame}
+		\frametitle{Question}
+		On comparing the ratios $\frac{a_1}{a_2},\frac{b_1}{b_2} \text{and} \frac{c_1}{c_2}$, find out whether the following pair of linear equations are consistent, or inconsistent . 
+		\begin{align}
+			3x + 2y = 5 ; 2x - 3y = 7
+		\end{align}
+	\end{frame}
+	\begin{frame}{Theoretical Solution}
+		\textbf{Theoritical solution:}
+		To determine whether the given pair of linear equations is consistent or inconsistent, we compare the ratios $\frac{a_1}{a_2}$, $\frac{b_1}{b_2}$, and $\frac{c_1}{c_2}$, where:
+		\begin{align}
+			a_1x + b_1y = c_1 \quad \text{and} \quad a_2x + b_2y = c_2
+		\end{align}
+		
+		From the equations:
+		\begin{align}
+			3x + 2y = 5 \quad \text{and} \quad 2x - 3y = 7,
+		\end{align}
+		we identify:
+		\begin{align}
+			a_1 = 3, \, b_1 = 2, \, c_1 = 5, \, a_2 = 2, \, b_2 = -3, \, c_2 = 7.
+		\end{align}
+		
+		Now calculate the ratios:
+		\begin{align}
+			\frac{a_1}{a_2} = \frac{3}{2}, \quad \frac{b_1}{b_2} = \frac{2}{-3}, \quad \frac{c_1}{c_2} = \frac{5}{7}.
+		\end{align}
+		
+		Since:
+		\begin{align}
+			\frac{a_1}{a_2} \neq \frac{b_1}{b_2},
+		\end{align}
+		the given pair of equations is \textbf{consistent} and the lines represented 
+	\end{frame}
+	\begin{frame}{Computational Solution}
+		by the equations are \textbf{intersecting}. Therefore, the system of equations has a unique solution.\\\\
+		\textbf{Solution using LU Factorization:}\\
+		Given the system of linear equations:
+		\begin{align}
+			3x + 2y &= 5, \label{eq1} \\
+			2x - 3y &= 7. \label{eq2}
+		\end{align}
+		
+		We rewrite the equations as:
+		\begin{align}
+			x_1 &= x, \\
+			x_2 &= y,
+		\end{align}
+		giving the system:
+		\begin{align}
+			3x_1 + 2x_2 &= 5, \label{eq3} \\
+			2x_1 - 3x_2 &= 7. \label{eq4}
+		\end{align}
+	\end{frame}
+	\begin{frame}{Step-by-Step Procedure for LU Factorization}
+		\textbf{Step-by-Step Procedure:}
+		\begin{enumerate}
+			\item \textbf{Initialization:} \\
+			- Start by initializing $ \mathbf{L} $ as the identity matrix $ \mathbf{L} = \mathbf{I} $ and $ \mathbf{U} $ as a copy of $ \mathbf{A} $.
+			
+			\item \textbf{Iterative Update:} \\
+			- For each pivot $ k = 1, 2, \ldots, n $:
+			\begin{itemize}
+				\item Compute the entries of $ \mathbf{U} $ using the first update equation.
+				\item Compute the entries of $ \mathbf{L} $ using the second update equation.
+			\end{itemize}
+			
+			\item \textbf{Result:} \\
+			- After completing the iterations, the matrix $ \mathbf{A} $ is decomposed into $ \mathbf{L} \cdot \mathbf{U} $, where $ \mathbf{L} $ is a lower triangular matrix with ones on the diagonal, and $ \mathbf{U} $ is an upper triangular matrix.
+		\end{enumerate}
+	\end{frame}
+	\begin{frame}{Update Equations for LU Factorization}
+		\textbf{1. Update for $ U_{k,j} $ (Entries of $ U $)} \\
+		For each column $ j \geq k $, the entries of $ \mathbf{U} $ in the $ k $-th row are updated as:
+		\[
+		U_{k,j} = A_{k,j} - \sum_{m=1}^{k-1} L_{k,m} \cdot U_{m,j}, \quad \text{for } j \geq k.
+		\]
+		This computes the elements of the upper triangular matrix $ \mathbf{U} $ by eliminating the lower triangular portion.
+		
+		\textbf{2. Update for $ L_{i,k} $ (Entries of $ L $)} \\
+		For each row $ i > k $, the entries of $ \mathbf{L} $ in the $ k $-th column are updated as:
+		\[
+		L_{i,k} = \frac{1}{U_{k,k}} \left( A_{i,k} - \sum_{m=1}^{k-1} L_{i,m} \cdot U_{m,k} \right), \quad \text{for } i > k.
+		\]\\
+		This equation computes the elements of the lower triangular matrix $ \mathbf{L} $, where each entry in the column is determined by the values in the rows above it
+	\end{frame}
+	\begin{frame}{LU Factorization and Forward Substitution}
+		\subsection*{Step 2: LU Factorization of Matrix $A$}
+		We decompose $A$ as:
+		\begin{align}
+			A &= LU,
+		\end{align}
+		where $L$ is a lower triangular matrix and $U$ is an upper triangular matrix. By running the iteration code, we get the $L$ and $U$ matrices:
+		\begin{align}
+			L &= \begin{bmatrix} 1 & 0 \\ \frac{2}{3} & 1 \end{bmatrix}, \\
+			U &= \begin{bmatrix} 3 & 2 \\ 0 & -\frac{13}{3} \end{bmatrix}.
+		\end{align}
+		
+		\subsection*{Step 3: Solve $L\mathbf{y} = \mathbf{b}$ (Forward Substitution)}
+		We solve:
+		\begin{align}
+			L\mathbf{y} = \mathbf{b} \quad \text{or} \quad 
+			\begin{bmatrix} 1 & 0 \\ \frac{2}{3} & 1 \end{bmatrix} 
+			\begin{bmatrix} y_1 \\ y_2 \end{bmatrix} = 
+			\begin{bmatrix} 5 \\ 7 \end{bmatrix}.
+		\end{align}
+		From the first row:
+		\begin{align}
+			y_1 &= 5.
+		\end{align}
+	\end{frame}
+	\begin{frame}{Forward and Backward Substitution}
+		\subsection*{Step 3: Solve $L\mathbf{y} = \mathbf{b}$ (Forward Substitution) - Continued}
+		From the second row:
+		\begin{align}
+			\frac{2}{3} y_1 + y_2 &= 7 \quad \implies \quad \frac{2}{3} \cdot 5 + y_2 = 7 \quad \implies \quad y_2 = \frac{11}{3}.
+		\end{align}
+		
+		Thus:
+		\begin{align}
+			\mathbf{y} &= \begin{bmatrix} 5 \\ \frac{11}{3} \end{bmatrix}.
+		\end{align}
+		
+		\subsection*{Step 4: Solve $U\mathbf{x} = \mathbf{y}$ (Backward Substitution)}
+		We solve:
+		\begin{align}
+			U\mathbf{x} = \mathbf{y} \quad \text{or} \quad 
+			\begin{bmatrix} 3 & 2 \\ 0 & -\frac{13}{3} \end{bmatrix} 
+			\begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = 
+			\begin{bmatrix} 5 \\ \frac{11}{3} \end{bmatrix}.
+		\end{align}
+		
+		From the second row:
+		\begin{align}
+			-\frac{13}{3} x_2 &= \frac{11}{3} \quad \implies \quad x_2 = -\frac{11}{13}.
+		\end{align}
+		
+		From the first row:
+		\begin{align}
+			3x_1 + 2x_2 &= 5 \quad \implies \quad 3x_1 + 2 \left( -\frac{11}{13} \right) = 5.
+		\end{align}
+	\end{frame}
+	\begin{frame}{Solution Completion: Backward Substitution and Final Solution}
+		From the first row:
+		\begin{align}
+			3x_1 - \frac{22}{13} &= 5 \quad \implies \quad 3x_1 = 5 + \frac{22}{13} = \frac{65}{13} + \frac{22}{13} = \frac{87}{13}, \\
+			x_1 &= \frac{87}{39} = \frac{29}{13}.
+		\end{align}
+		
+		Thus:
+		\begin{align}
+			\mathbf{x} &= \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} = \begin{bmatrix} \frac{29}{13} \\ -\frac{11}{13} \end{bmatrix}.
+		\end{align}
+		
+		\subsection*{Final Solution}
+		The solution is:
+		\begin{align}
+			x &= \frac{29}{13}, \\
+			y &= -\frac{11}{13}.
+		\end{align}
+		
+		As we can clearly see, there is a solution for the given lines, so the system of equations is \textbf{consistent}.
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Diagram}
+		\begin{figure}[!ht]
+			\centering
+			\includegraphics[width=\linewidth]{figs/Fig.png}
+		\end{figure}
+	\end{frame}
+\end{document}
+
