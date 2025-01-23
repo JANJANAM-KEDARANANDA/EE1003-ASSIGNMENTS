@@ -62,38 +62,25 @@
 	A die is rolled. Find the probability that a number greater than or equal to one will appear.\\
 	\textbf{Solution: }\\
 	\textbf{Theoretical solution: }\\
-	To calculate the probability of rolling a number greater than or equal to one:
-	
-	\begin{itemize}
-		\item A standard die has six faces numbered from 1 to 6.
-		\item The total number of possible outcomes is:
-		\[
-		\text{Total outcomes} = 6.
-		\]
-		\item The number of outcomes where the number is greater than or equal to one is:
-		\[
-		\text{Favorable outcomes} = 6.
-		\]
-		\item The probability is given by:
-		\[
-		P(\text{Number} \geq 1) = \frac{\text{Favorable outcomes}}{\text{Total outcomes}} = \frac{6}{6} = 1.
-		\]
-	\end{itemize}
-	
-	Thus, the probability that a number greater than or equal to one will appear is:
 	\[
-	\boxed{1}
+	\text{Total outcomes} = 6.
+	\]
+	\[
+	\text{Favorable outcomes} = 6.
+	\]
+	\[
+	P(\text{Number} \geq 1) = \frac{\text{Favorable outcomes}}{\text{Total outcomes}} = \frac{6}{6} = 1.
 	\]
 	
 	\textbf{Computational solution: }\\
-	\section*{Z-Transform Computational Method for Die Roll PMF}
 	\subsection*{PMF for a Single Die Roll}
 	For a single die roll, the probability mass function (PMF) is:
 	\[
 	P_X(k) =
 	\begin{cases}
-		\frac{1}{6}, & \text{if } x = 1, 2, 3, 4, 5, 6 \\
-		0, & \text{if } x \notin \{1, 2, 3, 4, 5, 6\}
+		\frac{1}{6}, & \text{if } 1 \leq x \leq 6\\
+		0, & \text{if } x > 6\\
+		0, & \text{if } x < 1
 	\end{cases}
 	\]
 	
@@ -115,7 +102,7 @@
 	\subsection*{Z-Transform Expansion}
 	The Z-transform for the number rolled is given by:
 	\begin{align}
-		T(z) = \left( \frac{1}{6}z^1 + \frac{1}{6}z^2 + \frac{1}{6}z^3 + \frac{1}{6}z^4 + \frac{1}{6}z^5 + \frac{1}{6}z^6 \right)
+		T(z) = \left( \frac{1}{6}z^{-1} + \frac{1}{6}z^{-2} + \frac{1}{6}z^{-3} + \frac{1}{6}z^{-4} + \frac{1}{6}z^{-5} + \frac{1}{6}z^{-6} \right)
 	\end{align}
 	where:
 	\begin{itemize}
@@ -125,14 +112,14 @@
 	\subsection*{Expansion of \(T(z)\)}
 	Simplify the expression:
 	\begin{align}
-		T(z) = \frac{1}{6}(z^1 + z^2 + z^3 + z^4 + z^5 + z^6).
+		T(z) = \frac{1}{6}(z^{-1} + z^{-2} + z^{-3} + z^{-4} + z^{-5} + z^{-6}).
 	\end{align}
-	The coefficient of \(z^k\) in \(T(z)\) gives the probability \(P_X(k)\), where \(X\) is the outcome of the die roll.
+	The coefficient of \(z^{-k}\) in \(T(z)\) gives the probability \(P_X(k)\), where \(X\) is the outcome of the die roll.
 	
 	\subsection*{Probability Mass Function (PMF)}
 	The PMF is computed as:
 	\begin{align}
-		P_X(k) = \frac{1}{6}, \quad k \in \{1, 2, 3, 4, 5, 6\}.
+		P_X(k) = \frac{1}{6}, \quad .1 \leq k \leq 6
 	\end{align}
 	
 	\subsection*{Computational Steps}
