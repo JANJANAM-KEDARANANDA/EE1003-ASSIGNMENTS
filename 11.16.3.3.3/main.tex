@@ -98,30 +98,6 @@
 	\begin{align}
 		6 \times \frac{1}{6} = 1.
 	\end{align}
-	
-	\subsection*{Z-Transform Expansion}
-	The Z-transform for the number rolled is given by:
-	\begin{align}
-		T(z) = \left( \frac{1}{6}z^{-1} + \frac{1}{6}z^{-2} + \frac{1}{6}z^{-3} + \frac{1}{6}z^{-4} + \frac{1}{6}z^{-5} + \frac{1}{6}z^{-6} \right)
-	\end{align}
-	where:
-	\begin{itemize}
-		\item Each term represents the probability of a specific outcome multiplied by its corresponding power of \(z\).
-	\end{itemize}
-	
-	\subsection*{Expansion of \(T(z)\)}
-	Simplify the expression:
-	\begin{align}
-		T(z) = \frac{1}{6}(z^{-1} + z^{-2} + z^{-3} + z^{-4} + z^{-5} + z^{-6}).
-	\end{align}
-	The coefficient of \(z^{-k}\) in \(T(z)\) gives the probability \(P_X(k)\), where \(X\) is the outcome of the die roll.
-	
-	\subsection*{Probability Mass Function (PMF)}
-	The PMF is computed as:
-	\begin{align}
-		P_X(k) = \frac{1}{6}, \quad .1 \leq k \leq 6
-	\end{align}
-	
 	\subsection*{Computational Steps}
 	For each \(k \in \{1, 2, \dots, 6\}\):
 	\begin{enumerate}
@@ -140,6 +116,26 @@
 	\begin{align}
 		P(X \geq 1) = \sum_{k=1}^{6} P_X(k) = \frac{6}{6} = 1.
 	\end{align}
+	\subsection*{Z-Transform Expansion}
+	\begin{align}
+		P(z) = \sum_{n=0}^{\infty} p(n) z^{-n}.\\
+		P(z) = \sum_{n=1}^{6} \frac{1}{6} z^{-n}.
+	\end{align}
+	The Z-transform for the number rolled is given by:
+	\begin{align}
+		T(z) = \left( \frac{1}{6}z^{-1} + \frac{1}{6}z^{-2} + \frac{1}{6}z^{-3} + \frac{1}{6}z^{-4} + \frac{1}{6}z^{-5} + \frac{1}{6}z^{-6} \right)
+	\end{align}
+	where:
+	\begin{itemize}
+		\item Each term represents the probability of a specific outcome multiplied by its corresponding power of \(z\).
+	\end{itemize}
+	
+	\subsection*{Expansion of \(T(z)\)}
+	Simplify the expression:
+	\begin{align}
+		T(z) = \frac{1}{6}(z^{-1} + z^{-2} + z^{-3} + z^{-4} + z^{-5} + z^{-6}).
+	\end{align}
+	The coefficient of \(z^{-k}\) in \(T(z)\) gives the probability \(P_X(k)\), where \(X\) is the outcome of the die roll.
 	\subsection*{Cumulative Distribution Function (CDF)}
 	
 	The cumulative distribution function (CDF) \(F(x)\) of a discrete random variable \(X\), representing the outcome of a die roll, is defined as:
