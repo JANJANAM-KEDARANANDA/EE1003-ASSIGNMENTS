@@ -73,91 +73,37 @@
 	\]
 	
 	\textbf{Computational solution: }\\
-	\subsection*{PMF for a Single Die Roll}
-	For a single die roll, the probability mass function (PMF) is:
-	\[
-	P_X(k) =
-	\begin{cases}
-		\frac{1}{6}, & \text{if } 1 \leq x \leq 6\\
-		0, & \text{if } x > 6\\
-		0, & \text{if } x < 1
-	\end{cases}
-	\]
-	
-	\subsection*{Conditions for PMF}
-	A valid PMF must satisfy the following conditions:
-	\begin{enumerate}
-		\item Non-negativity: \(\forall k, P_X(k) \geq 0\).
-		\item Normalization: \(\sum_{k} P_X(k) = 1\).
-	\end{enumerate}
-	For a single die roll:
+	The PMF for a fair die is:
 	\begin{align}
-		P_X(1) + P_X(2) + P_X(3) + P_X(4) + P_X(5) + P_X(6) = 1.
-	\end{align}
-	Substituting \(P_X(k) = \frac{1}{6}\) for all valid outcomes:
-	\begin{align}
-		6 \times \frac{1}{6} = 1.
-	\end{align}
-	\subsection*{Computational Steps}
-	For each \(k \in \{1, 2, \dots, 6\}\):
-	\begin{enumerate}
-		\item Compute the binomial coefficient (trivial for single outcomes).
-		\item Multiply by \(\frac{1}{6}\) to compute \(P_X(k)\).
-	\end{enumerate}
-	
-	\subsection*{Result for Single Roll}
-	The PMF values are:
-	\begin{align}
-		P_X(1) = \frac{1}{6}, \quad P_X(2) = \frac{1}{6}, \quad \dots, \quad P_X(6) = \frac{1}{6}.
-	\end{align}
-	
+		P(X = x) =
+		\begin{cases}
+			\frac{1}{n}, & k \in \{1, 2,\dots ,n\} \\
+			0, & \text{otherwise}
+		\end{cases}
+	\end{align}	
 	\subsection*{Conclusion}
 	The probability of rolling a number greater than or equal to one is the sum of all PMF values:
 	\begin{align}
 		P(X \geq 1) = \sum_{k=1}^{6} P_X(k) = \frac{6}{6} = 1.
 	\end{align}
-	\subsection*{Z-Transform Expansion}
-	\begin{align}
-		P(z) = \sum_{n=0}^{\infty} p(n) z^{-n}.\\
-		P(z) = \sum_{n=1}^{6} \frac{1}{6} z^{-n}.
-	\end{align}
-	The Z-transform for the number rolled is given by:
-	\begin{align}
-		T(z) = \left( \frac{1}{6}z^{-1} + \frac{1}{6}z^{-2} + \frac{1}{6}z^{-3} + \frac{1}{6}z^{-4} + \frac{1}{6}z^{-5} + \frac{1}{6}z^{-6} \right)
-	\end{align}
-	where:
-	\begin{itemize}
-		\item Each term represents the probability of a specific outcome multiplied by its corresponding power of \(z\).
-	\end{itemize}
-	
-	\subsection*{Expansion of \(T(z)\)}
-	Simplify the expression:
-	\begin{align}
-		T(z) = \frac{1}{6}(z^{-1} + z^{-2} + z^{-3} + z^{-4} + z^{-5} + z^{-6}).
-	\end{align}
-	The coefficient of \(z^{-k}\) in \(T(z)\) gives the probability \(P_X(k)\), where \(X\) is the outcome of the die roll.
 	\subsection*{Cumulative Distribution Function (CDF)}
 	
-	The cumulative distribution function (CDF) \(F(x)\) of a discrete random variable \(X\), representing the outcome of a die roll, is defined as:
-	
-	\[
-	F(x) = P(X \leq x)
-	\]
-	
-	For a die roll with outcomes \(1, 2, 3, 4, 5, 6\), the CDF is:
-	
-	\[
-	F(x) =
-	\begin{cases}
-		0, & \text{if } x < 1 \\
-		\frac{1}{6}, & \text{if } 1 \leq x < 2 \\
-		\frac{2}{6}, & \text{if } 2 \leq x < 3 \\
-		\frac{3}{6}, & \text{if } 3 \leq x < 4 \\
-		\frac{4}{6}, & \text{if } 4 \leq x < 5 \\
-		\frac{5}{6}, & \text{if } 5 \leq x < 6 \\
-		1, & \text{if } x \geq 6
-	\end{cases}
-	\]
+	The cumulative distribution function (CDF) \(F(x)\) of a discrete random variable \(X\), representing the outcome of a die roll, is defined as:\\
+	The CDF for the die roll is:
+	\begin{align}
+		F_X(k) = P(X \leq k) =
+		\begin{cases}
+			0, & k < 1 \\
+			\frac{k}{n}, & 1 \leq k < n\\
+			1, & k \geq n
+		\end{cases} \label{cdf}
+	\end{align}
+	Where n is 6. \\ 
+	$\therefore$ probability that a number greater than or equal to one will
+	appear is ; from \eqref{cdf}
+	\begin{align}
+		P(X \geq 1) = 1 - F(X < 1) = 1
+	\end{align} 
 	
 	\begin{figure}[h!]
 		\centering
