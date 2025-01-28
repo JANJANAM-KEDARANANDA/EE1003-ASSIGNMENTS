@@ -1,30 +1,54 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+#include <time.h>
 
-// Function to calculate PMF for the probability of rolling each number on a fair die
-void calculate_pmf_die(double *pmf) {
-    int total_faces = 6; // Total faces on a die
-
-    // Each face has an equal probability of 1/6
-    double probability = 1.0 / total_faces;
-
-    // Populate the PMF for each outcome (1 through 6)
-    for (int i = 0; i < total_faces; i++) {
-        pmf[i] = probability;
+// Function to calculate the PMF of rolling a die
+double* die_roll_pmf(int trials) {
+    if (trials <= 0) {
+        printf("Error: Number of trials must be greater than 0.\n");
+        return NULL;
     }
+
+    double* pmf = malloc(6 * sizeof(double));
+    if (pmf == NULL) {
+        printf("Error: Memory allocation failed.\n");
+        return NULL;
+    }
+
+    // Initialize the PMF array
+    for (int i = 0; i < 6; i++) {
+        pmf[i] = 0.0;
+    }
+
+    srand(time(NULL));
+
+    // Simulate rolling the die
+    for (int t = 0; t < trials; t++) {
+        int outcome = rand() % 6; // Generates a number between 0 and 5
+        pmf[outcome] += 1.0 / trials; // Update the probability for the outcome
+    }
+
+    return pmf;
 }
 
-// Function to calculate the cumulative probability of rolling a number >= 1
-void calculate_cumulative_pmf(double *pmf) {
-    // Since all numbers 1-6 are >= 1, the cumulative probability is 1 for all outcomes
-    pmf[6] = 1.0; // Probability of rolling >= 1 is always 1
+void free_pmf(double* pmf) {
+    free(pmf);
 }
 
-// Expose to Python
-__attribute__((visibility("default"))) __attribute__((used))
-void get_probabilities(double *pmf) {
-    calculate_pmf_die(pmf);
-    calculate_cumulative_pmf(pmf);
+int main() {
+    int trials;
+    printf("Enter the number of trials for simulating the die roll: ");
+    scanf("%d", &trials);
+
+    double* pmf = die_roll_pmf(trials);
+    if (pmf != NULL) {
+        printf("Simulated PMF of rolling a die:\n");
+        for (int i = 0; i < 6; i++) {
+            printf("P(X=%d) = %lf\n", i + 1, pmf[i]);
+        }
+        free_pmf(pmf);
+    }
+
+    return 0;
 }
 
